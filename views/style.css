@@ -16,41 +16,97 @@ body{
 }
 
 #titleWrapper h1{
-    flex: 1;
     opacity: 0;
-    animation: titleLandingText 1s forwards;
+    animation: titleLandingText 1.5s forwards;
+    animation-delay: 1s;
+    flex: 1;
 }
 
 #titleWrapper img{
-    flex: 1;
     max-height: 100px;
     margin-right: 10px;
     opacity: 0;
     animation: titleLandingImg 2.5s forwards;
-    transform: translateY(-15px);
-    transform: translateX(15px);
+    flex: 1;
 }
 
 @keyframes titleLandingImg{
     0%{
         opacity: 0;
-        transform: translateY(-15px);
-        transform: translateX(15px);
+        transform: translate(45px,15px);
     }
     40%{
-        opacity: 1;
-        transform: translateY(0px);
+        transform: translate(45px, 0);
     }
     100%{
-        transform: translateX(0px);
+        opacity: 1;
+        transform: translate(0,0);
     }
 }
 
 @keyframes titleLandingText{
     0%{
         opacity: 0;
+        transform: translateX(35px);
     }
     100%{
         opacity: 1;
+        transform: translateX(0);
     }
+}
+
+#mainNav{
+    display: flex;
+}
+
+#mainNav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    flex: 2;
+    text-align: center;
+    display: flex;
+}
+
+#mainNav li{
+    flex: 1;
+    margin-top: 3.7vh;
+}
+
+#mainNav a{
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    position: relative;
+}
+
+#mainNav a:after {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #fff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+#mainNav a:hover:after { 
+    width: 100%; 
+    left: 0; 
+}
+
+#navLogo{
+    max-height: 70px;
+}
+
+#navTitleWrapper h1{
+    flex: 1;
+    margin-left: 10px;
+}
+
+#navTitleWrapper{
+    flex: 1;
+    display: flex;
 }
