@@ -1,0 +1,57 @@
+<div class="form-group">
+    <label for="title">Naam</label>
+    <input required value="<%= article.title %>" type="text" name="title" id="title" class="form-control">
+</div>
+<div class="form-group" onload="selectValue()">
+    <label for="color">Kleur</label>
+    <select name="color" id="color" class="form-control">
+        <option value="Rood">Rood</option>
+        <option value="Wit">Wit</option>
+        <option value="Rosé">Rosé</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="description">Productie jaar</label>
+    <input type="number" value="<%= article.description %>" name="description" id="description" class="form-control" min="1950" max="2050">
+</div>
+<div class="form-group">
+    <label>Van wanneer tot wanneer opdrinken</label><button type="button" class="btn btn-secondary mb-2 float-right" onclick="opdronk()">Opdronk</button>
+    <input type="number" name="dateone" id="dateone" class="form-control" value="<%= article.dateone %>" min="1950" max="2050" placeholder="bv: 2020"><br>
+    <input type="number" name="datetwo" id="datetwo" class="form-control" value="<%= article.datetwo %>" min="1950" max="2050" placeholder="bv: 2025">
+</div>
+<div class="form-group">
+    <label for="amount">Hoeveel flessen</label>
+    <input required value="<%= article.amount %>" type="number" name="amount" id="amount" class="form-control" min="0">
+</div>
+<div class="form-group">
+    <label for="price">Prijs</label>
+    <input value="<%= article.price %>" type="number" name="price" id="price" class="form-control" min="0" placeholder="bv: 40, 50, 60" step="0.01">
+</div>
+<div class="form-group">
+    <label for="herkomst">Gekregen van</label>
+    <input value="<%= article.herkomst %>" type="text" name="herkomst" id="herkomst" class="form-control" placeholder="bv: Gekregen van Mathias, Italië">
+</div>
+<p>Herkomst</p>
+<div class="card-body">
+    <label for="Land">Land</label>
+    <input type="text" value="<%= article.land %>" name="land" id="land" class="form-control">
+    <label for="streek">Streek</label>
+    <input type="text" value="<%= article.streek %>" name="streek" id="streek" class="form-control">
+</div>
+<a href="/" class="btn btn-secondary">Annuleren</a>
+<button type="submit" class="btn btn-primary">Opslaan</button>
+<div style="margin-bottom: 10%"></div>
+<script>
+    function opdronk(){
+        var input = document.getElementById("dateone");
+        var input2 = document.getElementById("datetwo");
+        var year = new Date().getFullYear();
+        input.value = year;
+        input2.value = "20"
+        input2.focus();
+    }
+    function selectValue(){
+        var color = document.getElementById("color");
+        console.log(color.value);
+    }
+</script>

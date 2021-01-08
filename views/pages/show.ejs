@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wijnen</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    <link rel="icon" href="icon.ico">
+</head>
+<body>
+    <div class="container mt-2">
+        <h1 class="mb-3"><%= article.wijnen.title %></h1>
+        <a href="/" class="btn btn-secondary"><i class="fas fa-long-arrow-alt-left"></i></a>
+        <a href="/wijnen/edit/<%= article.wijnen.id %>" class="btn btn-info"><i class="fas fa-edit"></i></a>
+        <form action="/wijnen/<%= article.wijnen.id %>?_method=DELETE" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+        </form>
+        <div class="mt-4 card">
+            <div class="card-body">
+                Kleur: <br>
+                <p><%= article.wijnen.color %> </p>
+                Productie jaar: <br>
+                <p><%= article.wijnen.description %> </p>
+                Van wanneer tot wanneer opdrinken: <br>
+                <p><%= article.wijnen.dateone %> / <%= article.wijnen.datetwo %> </p>
+                Hoeveel flessen: <br>
+                <p><%- article.wijnen.amount %></p>
+                Datum toegevoegd: <br>
+                <p><%= article.wijnen.createdAt.toLocaleDateString() %></p>
+                <% if(article.wijnen.price != null) {%>
+                Prijs: <br>
+                <p>€<%= article.wijnen.price %></p>
+                <% } %>
+                <% if(article.wijnen.herkomst != "") { %>
+                Herkomst: <br>
+                <p> <%= article.wijnen.herkomst %> <br> </p>
+                <% } %>
+                <% if(article.wijnen.land != "") { %>
+                Land: <br>
+                <p> <%= article.wijnen.land %> <br> </p>
+                <% } %>
+                <% if(article.wijnen.streek != "") { %>
+                Streek: <br>
+                <p> <%= article.wijnen.streek %> </p>
+                <% } %>
+                <style>
+                    button{
+                        padding: 0;
+                        margin: 0;
+                    }
+                </style>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
