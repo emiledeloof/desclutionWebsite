@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submissions</title>
+    <link rel="icon" href="../DesclutionLogo.png">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header id="mainHeader">
+        <nav id="SecondaryNav">
+            <div id="navTitleWrapper">
+                <img src="../DesclutionLogo.png" id="navLogo"><h1>Desclution</h1>
+            </div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Info</a></li>
+                <li><a href="#">Submit</a></li>
+                <li><a href="#">Release Schedule</a></li>
+                <li><a href="/contact">contact</a></li>
+                <li><a href="./show">Submissions</a></li>
+            </ul>
+        </nav>
+    </header>
+    <input type="text" id="myInput" onkeyup="Search()" placeholder="Zoeken..." class="form-control">
+    <ul id="myUL">
+        <% articles.forEach(article => { %>
+            <li>
+                <div>
+                    <a href="wijnen/<%= article.slug %>">
+                    <h4 id="title"><%= article.title %></h4>
+                    <form action="/wijnen/<%= article.wijnen.id %>?_method=DELETE" method="POST" class="d-inline " id="delete">
+                        <button type="submit" class="btn btn-danger" id="delButton"><i class="fas fa-trash-alt"></i></button>
+                    </form>
+                    <label class="color"><%= article.creator %></label>
+                </div>
+        <% }) %>
+    </ul>
+    <script>
+        function Search(dateOne, dateTwo) {
+            // Declare variables
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById('myInput');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myUL");
+            li = ul.getElementsByTagName('li');
+            // Loop through all list items, and hide those who don't match the search query
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue > dateOne || txtValue < dateTwo){
+                    li[i].style.display = "";
+                } 
+                else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

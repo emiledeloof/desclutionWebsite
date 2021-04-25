@@ -10,40 +10,13 @@
 </head>
 <body>
     <div class="container mt-2">
-        <h1 class="mb-3"><%= article.wijnen.title %></h1>
         <a href="/" class="btn btn-secondary"><i class="fas fa-long-arrow-alt-left"></i></a>
-        <a href="/wijnen/edit/<%= article.wijnen.id %>" class="btn btn-info"><i class="fas fa-edit"></i></a>
-        <form action="/wijnen/<%= article.wijnen.id %>?_method=DELETE" method="POST" class="d-inline">
+        <a href="/wijnen/edit/" class="btn btn-info"><i class="fas fa-edit"></i></a>
+        <form action="/wijnen/?_method=DELETE" method="POST" class="d-inline">
             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
         </form>
         <div class="mt-4 card">
             <div class="card-body">
-                Kleur: <br>
-                <p><%= article.wijnen.color %> </p>
-                Productie jaar: <br>
-                <p><%= article.wijnen.description %> </p>
-                Van wanneer tot wanneer opdrinken: <br>
-                <p><%= article.wijnen.dateone %> / <%= article.wijnen.datetwo %> </p>
-                Hoeveel flessen: <br>
-                <p><%- article.wijnen.amount %></p>
-                Datum toegevoegd: <br>
-                <p><%= article.wijnen.createdAt.toLocaleDateString() %></p>
-                <% if(article.wijnen.price != null) {%>
-                Prijs: <br>
-                <p>€<%= article.wijnen.price %></p>
-                <% } %>
-                <% if(article.wijnen.herkomst != "") { %>
-                Herkomst: <br>
-                <p> <%= article.wijnen.herkomst %> <br> </p>
-                <% } %>
-                <% if(article.wijnen.land != "") { %>
-                Land: <br>
-                <p> <%= article.wijnen.land %> <br> </p>
-                <% } %>
-                <% if(article.wijnen.streek != "") { %>
-                Streek: <br>
-                <p> <%= article.wijnen.streek %> </p>
-                <% } %>
                 <style>
                     button{
                         padding: 0;
