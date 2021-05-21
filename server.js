@@ -19,13 +19,13 @@ mongoose.connect(process.env.DATABASE_URL, {
 app.set("view engine", "ejs");
 
 app.use(express.static("views"))
+app.use(express.static("uploads"))
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"))
 
 app.get("/", async (req, res) => {
-    const articles = await Article.find().sort({ createdAt: "desc"})
-    res.render("pages/index", { articles: articles});
-})
+    res.render("pages/index");
+});
 
 app.use("/pages", articleRouter);
 

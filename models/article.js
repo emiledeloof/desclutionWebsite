@@ -4,10 +4,11 @@ const slugify = require("slugify");
 const articleSchema = new mongoose.Schema({
     title :{
         type: String,
-        // required: true
+        required: true
     },
     pathToFile: {
-        type: String
+        type: String,
+        required: true
     },
     createdAt: {
         type: Date,
@@ -15,18 +16,24 @@ const articleSchema = new mongoose.Schema({
     },
     creator: {
         type: String,
-        // required: true
+        required: true
     },
     slug: {
         type: String,
         required: true,
         unique: true
+    },
+    email: {
+        type: String
+    },
+    discordTag: {
+        type: String
     }
 })
 
 articleSchema.pre("validate", function(next){
     if (this.title){
-        this.wijnen.slug = slugify(this.title + " " + this.creator, { lower: true, strict: true})
+        this.slug = slugify(this.title + " " + this.creator, { lower: true, strict: true})
     }
     next()
 });

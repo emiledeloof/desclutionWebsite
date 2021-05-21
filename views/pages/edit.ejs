@@ -3,15 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= article.wijnen.title %> - aanpassen</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="icon" href="icon.ico">
+    <title><%= article.title %> - Edit</title>
+    <link rel="icon" href="../DesclutionLogo.png">
 </head>
 <body>
+    <header id="mainHeader">
+        <nav id="SecondaryNav">
+            <div id="navTitleWrapper">
+                <img src="../DesclutionLogo.png" id="navLogo"><h1>Desclution</h1>
+            </div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="./info">Info</a></li>
+                <li><a href="./new">Submit</a></li>
+                <li><a href="./schedule">Release Schedule</a></li>
+                <li><a href="./contact">contact</a></li>
+                <li><a href="./submission">Submissions</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
-        <h1 class="mb-4">Wijn aanpassen</h1>
+        <h1 class="mb-4">Edit submission</h1>
 
-        <form action="/wijnen/<%= article.id %>?_method=PUT" method="POST">
+        <form action="/pages/<%= article.id %>?_method=PUT" method="POST">
             <%- include("_form_fields") %>
         </form>
     </div>

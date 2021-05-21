@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Submission</title>
-    <link rel="icon" href="../DesclutionLogo.png">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" href="../../DesclutionLogo.png">
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
     <header id="mainHeader">
@@ -16,19 +16,21 @@
             </div>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="#">Info</a></li>
-                <li><a href="#">Submit</a></li>
-                <li><a href="#">Release Schedule</a></li>
-                <li><a href="/contact">contact</a></li>
-                <li><a href="/submissions">Submissions</a></li>
+                <li><a href="./info">Info</a></li>
+                <li><a href="./new">Submit</a></li>
+                <li><a href="./schedule">Release Schedule</a></li>
+                <li><a href="./contact">contact</a></li>
+                <li><a href="./submission">Submissions</a></li>
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <h1 class="mb-4">Submit your song</h1>
-        <form action="/pages" method="POST" enctype="multipart/form-data">
-            <%- include("_form_fields") %>
-        </form>
-    </div>
+    <main style="margin-top: 100px;">
+        <div class="container">
+            <h1>Submit your song</h1>
+            <form action="/pages" method="POST" enctype="multipart/form-data">
+                <%- include("_form_fields") %>
+            </form>
+        </div>
+    </main>
 </body>
 </html>

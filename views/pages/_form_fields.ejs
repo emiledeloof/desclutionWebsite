@@ -1,15 +1,22 @@
 <div class="inputGroup">
     <label for="">Title:</label>
-    <input type="text" id="title" class="inputs" name="title">
+    <input type="text" id="title" class="inputs" name="title" required>
 </div>
 <div class="inputGroup">
     <label for="">Artist name:</label>
-    <input type="text" id="creator" class="inputs" name="creator">
+    <input type="text" id="creator" class="inputs" name="creator" required>
 </div>
 <div class="inputGroup">
-    <label for="">Title:</label>
-    <input type="file" id="audioFile" class="inputs" name="audioFile">
+    <label for="">E-mail</label>
+    <input type="email" id="email" class="inputs" name="email" required>
 </div>
-
+<div class="inputGroup">
+    <label for="">Discord tag (only if applicable)</label>
+    <input type="text" id="discordTag" class="inputs" name="discordTag">
+</div>
+<div class="inputGroup">
+    <label for="">File:</label>
+    <input type="file" id="audioFile" class="inputs" name="audioFile" accept=".mp3,audio/*" required>
+</div>
 <a href="/" class="btn btn-secondary">Cancel</a>
 <button type="submit" class="btn btn-primary">Submit</button>

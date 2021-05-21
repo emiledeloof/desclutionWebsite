@@ -7,8 +7,9 @@
     <title>Submissions</title>
     <link rel="icon" href="../DesclutionLogo.png">
     <link rel="stylesheet" href="../style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 </head>
-<body>
+<body onload="checkLi()">
     <header id="mainHeader">
         <nav id="SecondaryNav">
             <div id="navTitleWrapper">
@@ -16,25 +17,27 @@
             </div>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="#">Info</a></li>
-                <li><a href="#">Submit</a></li>
-                <li><a href="#">Release Schedule</a></li>
-                <li><a href="/contact">contact</a></li>
-                <li><a href="./show">Submissions</a></li>
+                <li><a href="./info">Info</a></li>
+                <li><a href="./new">Submit</a></li>
+                <li><a href="./schedule">Release Schedule</a></li>
+                <li><a href="./contact">contact</a></li>
+                <li><a href="./submission">Submissions</a></li>
             </ul>
         </nav>
     </header>
-    <input type="text" id="myInput" onkeyup="Search()" placeholder="Zoeken..." class="form-control">
+    <!-- <input type="text" id="myInput" onkeyup="Search()" placeholder="Zoeken..." class="form-control" style="padding-top: 500px;"> -->
+    <h1 id="noSub">No submissions yet!</h1>
     <ul id="myUL">
         <% articles.forEach(article => { %>
             <li>
                 <div>
-                    <a href="wijnen/<%= article.slug %>">
-                    <h4 id="title"><%= article.title %></h4>
-                    <form action="/wijnen/<%= article.wijnen.id %>?_method=DELETE" method="POST" class="d-inline " id="delete">
-                        <button type="submit" class="btn btn-danger" id="delButton"><i class="fas fa-trash-alt"></i></button>
-                    </form>
-                    <label class="color"><%= article.creator %></label>
+                    <a href="./<%= article.slug %>">
+                        <h4 id="title"><%= article.title %></h4>
+                        <form action="/pages/<%= article.id %>?_method=DELETE" method="POST" class="d-inline " id="delete">
+                            <button type="submit" class="btn btn-danger" id="delButton"><i class="fas fa-trash-alt"></i></button>
+                        </form>
+                        <label class="color"><%= article.creator %></label>
+                    </a>
                 </div>
         <% }) %>
     </ul>
@@ -50,12 +53,22 @@
             for (i = 0; i < li.length; i++) {
                 a = li[i].getElementsByTagName("a")[0];
                 txtValue = a.textContent || a.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue > dateOne || txtValue < dateTwo){
+                if (txtValue.toUpperCase().indexOf(filter) > -1){
                     li[i].style.display = "";
                 } 
                 else {
                     li[i].style.display = "none";
                 }
+            }
+        }
+        function checkLi(){
+            let ul = document.getElementById("myUL");
+            let noSub = document.getElementById("noSub");
+            if(ul.childElementCount == 0){
+                noSub.style.display = "block"
+            }
+            else{
+                noSub.style.display = "none"
             }
         }
     </script>
