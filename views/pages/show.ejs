@@ -24,12 +24,14 @@
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <a href="./submissions" class="btn btn-secondary"><i class="fas fa-long-arrow-alt-left"></i></a>
-        <a href="./edit/<%= article.id %>" class="btn btn-info"><i class="fas fa-edit"></i></a>
-        <form action="./<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
-            <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-        </form>
+    <div class="container" style="margin-top: 100px;">
+        <div class="actionButtonsWrapper">
+            <a href="./submissions" class="btn btn-secondary"><i class="fas fa-long-arrow-alt-left"></i></a>
+            <a href="./edit/<%= article.id %>" class="btn btn-info"><i class="fas fa-edit"></i></a>
+            <form action="./<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
+                <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+            </form>
+        </div>
         <div>
             <h1><%= article.title %> - <%= article.creator %></h1>
             <audio controls>

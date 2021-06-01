@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= article.title %> - Edit</title>
-    <link rel="icon" href="../DesclutionLogo.png">
+    <link rel="icon" href="../../DesclutionLogo.png">
+    <link rel="stylesheet" href="../../style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 </head>
 <body>
     <header id="mainHeader">
         <nav id="SecondaryNav">
             <div id="navTitleWrapper">
-                <img src="../DesclutionLogo.png" id="navLogo"><h1>Desclution</h1>
+                <img src="../../DesclutionLogo.png" id="navLogo"><h1>Desclution</h1>
             </div>
             <ul>
                 <li><a href="/">Home</a></li>
@@ -22,9 +24,8 @@
             </ul>
         </nav>
     </header>
-    <div class="container">
+    <div class="editContainer">
         <h1 class="mb-4">Edit submission</h1>
-
         <form action="/pages/<%= article.id %>?_method=PUT" method="POST">
             <%- include("_form_fields") %>
         </form>

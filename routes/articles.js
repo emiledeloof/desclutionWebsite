@@ -2,7 +2,6 @@ const express = require("express");
 const Article = require("./../models/article");
 const router = express.Router();
 const multer = require("multer");
-const uuid = require("uuid");
 let fileName = "";
 
 const storage = multer.diskStorage({
@@ -34,17 +33,6 @@ router.get("/schedule", async (req, res) => {
     res.render("pages/schedule");
 });
 
-router.get("/submissions", async (req, res)=> {
-    const articles = await Article.find().sort({ createdAt: "desc"})
-    res.render("pages/submission", { articles: articles});
-});
-
-router.get("/:slug", async (req, res) => {
-    const article = await Article.findOne({ slug: req.params.slug})
-    if(article == null) res.render("pages/submission")
-    res.render("pages/show", { article: article })
-});
-
 router.post("/", upload.single("audioFile"), async (req, res, next) => {
     req.article = new Article();
     next()
@@ -55,14 +43,9 @@ router.put("/:id", async (req, res, next) => {
     next()
 }, saveArticleAndRedirect("edit"));
 
-router.put("/:id", async (req, res, next) => {
-    req.article = await Article.findById(req.params.id)
-    next()
-}, saveArticleAndRedirect("show"));
-
 router.delete("/:id", async (req, res) => {
     await Article.findByIdAndDelete(req.params.id)
-    res.redirect("/")
+    res.redirect("./submission")
 });
 
 router.get("/info", (req, res) => {
@@ -71,6 +54,22 @@ router.get("/info", (req, res) => {
 
 router.get("/contact", (req, res) => {
     res.render("pages/contact");
+});
+
+router.put("/:id", async (req, res, next) => {
+    req.article = await Article.findById(req.params.id)
+    next()
+}, saveArticleAndRedirect("show"));
+
+router.get("/submission", async (req, res)=> {
+    const articles = await Article.find().sort({ createdAt: "desc"})
+    res.render("pages/submission", { articles: articles});
+});
+
+router.get("/:slug", async (req, res) => {
+    const article = await Article.findOne({ slug: req.params.slug})
+    if(article == null) res.render("pages/submission")
+    res.render("pages/show", { article: article })
 });
 
 function saveArticleAndRedirect(path){

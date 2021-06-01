@@ -1,22 +1,26 @@
-<div class="inputGroup">
-    <label for="">Title:</label>
-    <input type="text" id="title" class="inputs" name="title" required>
+<div class="inputWrapper">
+    <div class="inputGroup">
+        <label for="">Title:</label>
+        <input type="text" id="title" class="inputs" name="title" required>
+    </div>
+    <div class="inputGroup">
+        <label for="">Artist name:</label>
+        <input type="text" id="creator" class="inputs" name="creator" required>
+    </div>
+    <div class="inputGroup">
+        <label for="">E-mail</label>
+        <input type="email" id="email" class="inputs" name="email" required>
+    </div>
+    <div class="inputGroup">
+        <label for="">Discord tag (only if applicable)</label>
+        <input type="text" id="discordTag" class="inputs" name="discordTag">
+    </div>
+    <div class="inputGroup">
+        <label for="file-upload" class="custom-file-upload">
+            <i class="fas fa-cloud-upload-alt"></i> Upload file
+        </label>
+        <input id="file-upload" type="file" name="audioFile" accept=".mp3,audio/*" required/>
+    </div>
+    <a href="/" id="cancelButton" class="buttons">Cancel</a>
+    <button type="submit" id="submitButton" class="buttons">Submit</button>
 </div>
-<div class="inputGroup">
-    <label for="">Artist name:</label>
-    <input type="text" id="creator" class="inputs" name="creator" required>
-</div>
-<div class="inputGroup">
-    <label for="">E-mail</label>
-    <input type="email" id="email" class="inputs" name="email" required>
-</div>
-<div class="inputGroup">
-    <label for="">Discord tag (only if applicable)</label>
-    <input type="text" id="discordTag" class="inputs" name="discordTag">
-</div>
-<div class="inputGroup">
-    <label for="">File:</label>
-    <input type="file" id="audioFile" class="inputs" name="audioFile" accept=".mp3,audio/*" required>
-</div>
-<a href="/" class="btn btn-secondary">Cancel</a>
-<button type="submit" class="btn btn-primary">Submit</button>
