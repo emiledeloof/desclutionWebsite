@@ -1,19 +1,19 @@
 <div class="inputWrapper">
     <div class="inputGroup">
         <label for="">Title:</label>
-        <input type="text" id="title" class="inputs" name="title" required>
+        <input type="text" id="title" class="inputs" name="title" value="<%= article.title %>" required>
     </div>
     <div class="inputGroup">
         <label for="">Artist name:</label>
-        <input type="text" id="creator" class="inputs" name="creator" required>
+        <input type="text" id="creator" class="inputs" name="creator" value="<%= article.creator %>" required>
     </div>
     <div class="inputGroup">
         <label for="">E-mail</label>
-        <input type="email" id="email" class="inputs" name="email" required>
+        <input type="email" id="email" class="inputs" name="email" value="<%= article.email %>" required>
     </div>
     <div class="inputGroup">
         <label for="">Discord tag (only if applicable)</label>
-        <input type="text" id="discordTag" class="inputs" name="discordTag">
+        <input type="text" id="discordTag" class="inputs" value="<%= article.discordTag %>" name="discordTag">
     </div>
     <div class="inputGroup">
         <label for="file-upload" class="custom-file-upload">

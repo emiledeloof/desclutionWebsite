@@ -18,7 +18,6 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="./info">Info</a></li>
                 <li><a href="./new">Submit</a></li>
-                <li><a href="./schedule">Release Schedule</a></li>
                 <li><a href="./contact">contact</a></li>
                 <li><a href="./submission">Submissions</a></li>
             </ul>
@@ -26,10 +25,10 @@
     </header>
     <div class="container" style="margin-top: 100px;">
         <div class="actionButtonsWrapper">
-            <a href="./submissions" class="btn btn-secondary"><i class="fas fa-long-arrow-alt-left"></i></a>
-            <a href="./edit/<%= article.id %>" class="btn btn-info"><i class="fas fa-edit"></i></a>
-            <form action="./<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
-                <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+            <a href="./submission" class="actionButtons"><i class="fas fa-long-arrow-alt-left"></i></a>
+            <a href="./edit/<%= article.id %>" class="actionButtons"><i class="fas fa-edit"></i></a>
+            <form action="./<%= article.id %>?_method=DELETE" method="POST" class="">
+                <button type="submit" class="actionButtons"><i class="fas fa-trash-alt"></i></button>
             </form>
         </div>
         <div>

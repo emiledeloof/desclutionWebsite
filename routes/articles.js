@@ -29,10 +29,6 @@ router.get("/contact", (req, res) => {
     res.render("pages/contact");
 });
 
-router.get("/schedule", async (req, res) => {
-    res.render("pages/schedule");
-});
-
 router.post("/", upload.single("audioFile"), async (req, res, next) => {
     req.article = new Article();
     next()
