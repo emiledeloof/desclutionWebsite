@@ -300,7 +300,54 @@ body{
 }
 
 .actionButtonsWrapper{
-    position: relative;
+    display: flex;
+    width: 13%;
+}
+
+.actionButtons{
+    flex: 1;
+    color: white;
+    background-color: black;
+    max-width: 30px;
+    margin-right: 5px;
+    text-align: center;
+    padding: 7px 7px 7px 7px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    transition: 0.2s;
+}
+
+.actionButtons:hover{
+    cursor: pointer;
+}
+
+#greyButton{
+    background-color: grey;
+}
+
+#blueButton{
+    background-color: rgb(91, 91, 255);
+}
+
+#redButton{
+    background-color: rgb(255, 34, 34);
+}
+
+#greyButton:hover{
+    background-color: rgb(107, 107, 107);
+}
+
+#blueButton:hover{
+    background-color: rgb(68, 68, 255);
+}
+
+#redButton:hover{
+    background-color: rgb(218, 0, 0);
+}
+
+.deleteForm{
+    width: 50px;
 }
 
 .buttons{
@@ -359,7 +406,7 @@ input[type="file"] {
     text-decoration: none;
 }
 
-#myUL li:hover{
+#myUL a:hover{
     cursor: pointer;
 }
 

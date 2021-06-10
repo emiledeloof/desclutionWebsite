@@ -23,12 +23,12 @@
             </ul>
         </nav>
     </header>
-    <div class="container" style="margin-top: 100px;">
+    <div class="container" style="margin-top: 100px; margin-left: 50px;">
         <div class="actionButtonsWrapper">
-            <a href="./submission" class="actionButtons"><i class="fas fa-long-arrow-alt-left"></i></a>
-            <a href="./edit/<%= article.id %>" class="actionButtons"><i class="fas fa-edit"></i></a>
-            <form action="./<%= article.id %>?_method=DELETE" method="POST" class="">
-                <button type="submit" class="actionButtons"><i class="fas fa-trash-alt"></i></button>
+            <a href="./submission" class="actionButtons" id="greyButton"><i class="fas fa-long-arrow-alt-left"></i></a>
+            <a href="./edit/<%= article.id %>" class="actionButtons" id="blueButton"><i class="fas fa-edit"></i></a>
+            <form action="./<%= article.id %>?_method=DELETE" method="POST" class="deleteForm">
+                <button type="submit" class="actionButtons" id="redButton"><i class="fas fa-trash-alt"></i></button>
             </form>
         </div>
         <div>
