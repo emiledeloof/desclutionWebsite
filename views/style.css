@@ -447,3 +447,28 @@ input[type="file"] {
 .delButtonForm{
     position: relative;
 }
+
+#submisisonsWrapper{
+    display: none;
+}
+
+#myInput{
+    margin-left: 50px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 5px 5px 5px;
+    width: 300px;
+}
+
+#loginWrapper input{
+    font-size: 18px;
+    padding: 5px 5px 5px 5px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+
+#loginWrapper input[type="submit"]:hover{
+    cursor: pointer;
+}

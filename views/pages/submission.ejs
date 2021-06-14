@@ -8,6 +8,7 @@
     <link rel="icon" href="../DesclutionLogo.png">
     <link rel="stylesheet" href="../style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    <script src="../app.js"></script>
 </head>
 <body onload="checkLi()">
     <header id="mainHeader">
@@ -24,24 +25,31 @@
             </ul>
         </nav>
     </header>
-    <!-- <input type="text" id="myInput" onkeyup="Search()" placeholder="Zoeken..." class="form-control" style="padding-top: 500px;"> -->
-    <h1 id="noSub">No submissions yet!</h1>
-    <ul id="myUL">
-        <% articles.forEach(article => { %>
-            <li class="subCard">
-                <div>
-                    <a href="./<%= article.slug %>">
-                        <form action="/pages/<%= article.id %>?_method=DELETE" method="POST" class="delButtonForm" id="delete">
-                            <button type="submit" class="btn btn-danger" id="delButton"><i class="fas fa-trash-alt"></i></button>
-                        </form>
-                        <h4 id="title">Title: <%= article.title %></h4>
-                        <h4 class="color">Artist: <%= article.creator %></h4>
-                    </a>
-                </div>
-        <% }) %>
-    </ul>
+    <div id="submisisonsWrapper">
+        <input type="text" id="myInput" onkeyup="Search()" placeholder="Search..." style="margin-top: 130px;">
+        <h1 id="noSub">No submissions yet!</h1>
+        <ul id="myUL">
+            <% articles.forEach(article => { %>
+                <li class="subCard">
+                    <div>
+                        <a href="./<%= article.slug %>">
+                            <form action="/pages/<%= article.id %>?_method=DELETE" method="POST" class="delButtonForm" id="delete">
+                                <button type="submit" class="btn btn-danger" id="delButton"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                            <h4 id="title">Title: <%= article.title %></h4>
+                            <h4 class="color">Artist: <%= article.creator %></h4>
+                        </a>
+                    </div>
+            <% }) %>
+        </ul>
+    </div>
+    <div id="loginWrapper" style="margin-top: 10%;">
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <input type="submit" onclick="login()">
+    </div>
     <script>
-        function Search(dateOne, dateTwo) {
+        function Search() {
             // Declare variables
             var input, filter, ul, li, a, i, txtValue;
             input = document.getElementById('myInput');
@@ -63,6 +71,11 @@
         function checkLi(){
             let ul = document.getElementById("myUL");
             let noSub = document.getElementById("noSub");
+            let subsWrapper = document.getElementById("submisisonsWrapper");
+            if(sessionStorage.getItem("login") == "true"){
+                subsWrapper.style.display = "block";
+                document.getElementById("loginWrapper").style.display = "none"
+            }
             if(ul.childElementCount == 0){
                 noSub.style.display = "block"
             }
