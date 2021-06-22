@@ -19,7 +19,7 @@
         <label for="file-upload" class="custom-file-upload">
             <i class="fas fa-cloud-upload-alt"></i> Upload file
         </label>
-        <input id="file-upload" type="file" name="audioFile" accept=".mp3,audio/*" required/>
+        <input id="file-upload" type="file" name="audioFile" accept=".mp3,audio/*" value="../<%= article.pathToFile %>" required/>
     </div>
     <a href="/" id="cancelButton" class="buttons">Cancel</a>
     <button type="submit" id="submitButton" class="buttons">Submit</button>

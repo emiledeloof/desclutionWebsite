@@ -33,6 +33,10 @@
         </div>
         <div>
             <h1><%= article.title %> - <%= article.creator %></h1>
+            <p>Email: <%= article.email %></p>
+            <% if(article.discordTag != ""){ %>
+                <p>Discod Tag: <%= article.discordTag %></p>
+            <% } %>
             <audio controls>
                 <source src="../<%= article.pathToFile %>" type="audio/mpeg">
                 Your browser does not support the audio element.
