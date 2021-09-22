@@ -3,6 +3,7 @@ const Article = require("./../models/article");
 const router = express.Router();
 const multer = require("multer");
 let fileName = "";
+const Login = require("./../models/login");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -11,9 +12,10 @@ const storage = multer.diskStorage({
     filename: (req, file, cb) => {
         const {originalname} = file;
         cb(null, originalname);
-        fileName = originalname
+        fileName = originalname;
     }
 });
+
 const upload = multer({ storage });
 
 router.get("/new", (req, res) => {
@@ -28,6 +30,33 @@ router.get("/edit/:id", async (req, res) =>{
 router.get("/contact", (req, res) => {
     res.render("pages/contact");
 });
+
+router.get("/login", (req, res) => {
+    res.render("pages/login");
+});
+
+// router.post("/login", async (req, res) => {
+//     // const loginInfo = await Login.findById(req.params.id);
+//     // if(loginInfo.username == req.body.username && loginInfo.password == req.body.password){
+//     if(req.body.username == Login.findOne({username: req.body.username}) && req.body.password == Login.findOne({password: req.body.password})){
+//         console.log("validated data is correct");
+//         res.redirect("./submission");
+//     } else{
+//         console.log("validated data is not correct");
+//         console.log(Login.findOne({username: req.body.username}));
+//         console.log(Login.findOne({password: req.body.password}));
+//         // res.redirect("/");
+//     }
+// });
+
+router.post("/login", async (req, res) => {
+    if(req.body.username == process.env.LOGIN_USERNAME && req.body.password == process.env.LOGIN_PASSWORD){
+        res.redirect("./submission");
+    } else {
+        res.redirect("/");
+        // console.log(req.body.username, req.body.password)
+    }
+})
 
 router.post("/", upload.single("audioFile"), async (req, res, next) => {
     req.article = new Article();
@@ -68,6 +97,7 @@ router.get("/:slug", async (req, res) => {
     res.render("pages/show", { article: article })
 });
 
+
 function saveArticleAndRedirect(path){
     return async (req, res) => {
         let article = req.article
@@ -76,6 +106,7 @@ function saveArticleAndRedirect(path){
         article.pathToFile = "uploads/" + fileName
         article.email = req.body.email
         article.discordTag = req.body.discordTag
+        article.name = req.body.name
         try {
             article = await article.save()
             res.render("pages/confirmation");

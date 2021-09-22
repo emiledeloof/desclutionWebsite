@@ -2,6 +2,7 @@
 
 *{
     scroll-behavior: smooth;
+    outline: none;
 }
 
 body{
@@ -119,17 +120,24 @@ body{
 }
 
 #navLogo{
+    position: absolute;
     max-height: 70px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 #navTitleWrapper h1{
-    flex: 1;
     margin-left: 10px;
+    position: absolute;
+    top: 25%;
+    transform: translateY(-50%);
+    left: 75px;
 }
 
 #navTitleWrapper{
     flex: 1;
     display: flex;
+    position: relative;
 }
 
 #SecondaryNav{
@@ -193,13 +201,19 @@ body{
 
 @keyframes upAndDown{
     0%{
-        transform: translateY(0px);
+        /* transform:  translateX(-50%); */
+        /* transform: translateY(0px); */
+        transform: translate(-50%, 0px);
     }
     50%{
-        transform: translateY(-5px);
+        /* transform:  translateX(-50%); */
+        /* transform: translateY(-5px); */
+        transform: translate(-50%, -5px);
     }
     100%{
-        transform: translateY(0px);
+        /* transform:  translateX(-50%); */
+        /* transform: translateY(0px); */
+        transform: translate(-50%, 0px);
     }
 }
 
@@ -213,7 +227,6 @@ body{
     position: absolute;
     top: 85vh;
     left: 50%;
-    transform: translate(-50%,-50%);
     color: white;
     text-decoration: none;
     transition: 0.3s;
@@ -264,7 +277,15 @@ body{
     margin-bottom: 10px;
 }
 
-.inputGroup input{
+/* .inputGroup input{
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 8px;
+    outline: none;
+} */
+
+.inputs{
     font-size: 18px;
     border-radius: 10px;
     border: none;
@@ -485,4 +506,8 @@ input[type="file"] {
     #mainNav li{
         text-align: right;
     }
+}
+
+.loginContainer{
+    margin-top: 15vh;
 }

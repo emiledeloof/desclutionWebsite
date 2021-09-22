@@ -28,6 +28,13 @@ const articleSchema = new mongoose.Schema({
     },
     discordTag: {
         type: String
+    },
+    pathToImg: {
+        type: String
+    }, 
+    name: {
+        type: String,
+        required: true
     }
 })
 
