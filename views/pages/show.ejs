@@ -33,8 +33,12 @@
         <div>
             <h1><%= article.title %> - <%= article.creator %></h1>
             <p>Email: <%= article.email %></p>
+            <p>Full name: <%= article.name %></p>
             <% if(article.discordTag != ""){ %>
                 <p>Discod Tag: <%= article.discordTag %></p>
+            <% } %>
+            <% if(article.comment != ""){ %>
+                <p>Comments: <%= article.comment %></p>
             <% } %>
             <audio controls>
                 <source src="../<%= article.pathToFile %>" type="audio/mpeg">

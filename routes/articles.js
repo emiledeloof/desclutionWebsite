@@ -35,31 +35,31 @@ router.get("/login", (req, res) => {
     res.render("pages/login");
 });
 
-router.post("/login", async (req, res) => {
-    // const loginInfo = await Login.findById(req.params.id);
-    // if(loginInfo.username == req.body.username && loginInfo.password == req.body.password){
-    // if(req.body.username == Login.findOne({username: req.body.username}) && req.body.password == Login.findOne({password: req.body.password})){
-    if(Login.findOne({username: req.body.username}) && Login.findOne({password: req.body.password})){
-        console.log("validated data is correct");
-        console.log(Login.findOne({username: req.body.username}))
-        console.log(Login.findOne({username: req.body.password}))
-        res.redirect("./submission");
-    } else{
-        console.log("validated data is not correct");
-        console.log(Login.findOne({username: req.body.username}));
-        console.log(Login.findOne({password: req.body.password}));
-        // res.redirect("/");
-    }
-});
-
 // router.post("/login", async (req, res) => {
-//     if(req.body.username == process.env.LOGIN_USERNAME && req.body.password == process.env.LOGIN_PASSWORD){
+//     // const loginInfo = await Login.findById(req.params.id);
+//     // if(loginInfo.username == req.body.username && loginInfo.password == req.body.password){
+//     // if(req.body.username == Login.findOne({username: req.body.username}) && req.body.password == Login.findOne({password: req.body.password})){
+//     if(Login.findOne({username: req.body.username}) && Login.findOne({password: req.body.password})){
+//         console.log("validated data is correct");
+//         console.log(Login.findOne({username: req.body.username}))
+//         console.log(Login.findOne({username: req.body.password}))
 //         res.redirect("./submission");
-//     } else {
-//         res.redirect("/");
-//         // console.log(req.body.username, req.body.password)
+//     } else{
+//         console.log("validated data is not correct");
+//         console.log(Login.findOne({username: req.body.username}));
+//         console.log(Login.findOne({password: req.body.password}));
+//         // res.redirect("/");
 //     }
-// })
+// });
+
+router.post("/login", async (req, res) => {
+    if(req.body.username == process.env.LOGIN_USERNAME && req.body.password == process.env.LOGIN_PASSWORD){
+        res.redirect("./submission");
+    } else {
+        res.redirect("/");
+        // console.log(req.body.username, req.body.password)
+    }
+})
 
 router.post("/", upload.single("audioFile"), async (req, res, next) => {
     req.article = new Article();
@@ -110,6 +110,7 @@ function saveArticleAndRedirect(path){
         article.email = req.body.email
         article.discordTag = req.body.discordTag
         article.name = req.body.name
+        article.comment = req.body.comment
         try {
             article = await article.save()
             res.render("pages/confirmation");
