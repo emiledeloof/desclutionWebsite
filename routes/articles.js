@@ -102,21 +102,48 @@ router.get("/:slug", async (req, res) => {
 
 
 function saveArticleAndRedirect(path){
-    return async (req, res) => {
-        let article = req.article
-        article.title = req.body.title
-        article.creator = req.body.creator
-        article.pathToFile = "uploads/" + fileName
-        article.email = req.body.email
-        article.discordTag = req.body.discordTag
-        article.name = req.body.name
-        article.comment = req.body.comment
-        try {
-            article = await article.save()
-            res.render("pages/confirmation");
-        } catch (e) {
-            res.render(`pages/${path}`, { article: article })
-            console.log(e);
+    if(path != "edit"){
+        return async (req, res) => {
+            let article = req.article
+            article.title = req.body.title
+            article.creator = req.body.creator
+            article.pathToFile = "uploads/" + fileName
+            article.email = req.body.email
+            article.discordTag = req.body.discordTag
+            article.name = req.body.name
+            article.comment = req.body.comment
+            try {
+                if(article.pathToFile != null){
+                    article = await article.save()
+                    res.render("pages/confirmation");
+                }
+            } catch (e) {
+                res.render(`pages/${path}`, { article: article })
+                console.log(e);
+            }
+        }
+    }
+    if(path == "edit"){
+        return async (req, res) => {
+            let article = req.article
+            article.title = req.body.title
+            article.creator = req.body.creator
+            article.email = req.body.email
+            article.discordTag = req.body.discordTag
+            article.name = req.body.name
+            article.comment = req.body.comment
+            if(article.pathToFile != "uploads/" + fileName){
+                article.pathToFile = "uploads/" + fileName
+            } else {
+                console.log("just this");
+            }
+            try {
+                article = await article.save()
+                res.redirect(`./${article.slug}`);
+            } catch (e) {
+                res.render(`pages/${path}`, { article: article })
+                console.log(e);
+            }
         }
     }
 }

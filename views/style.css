@@ -403,9 +403,9 @@ body{
     background-color: rgb(16, 16, 255);
 }
 
-input[type="file"] {
+/* input[type="file"] {
     display: none;
-}
+} */
 .custom-file-upload {
     border: 1px solid #ccc;
     display: inline-block;
