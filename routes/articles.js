@@ -107,7 +107,10 @@ function saveArticleAndRedirect(path){
             let article = req.article
             article.title = req.body.title
             article.creator = req.body.creator
-            article.pathToFile = "uploads/" + fileName
+            if(fileName != ""){
+                console.log(fileName);
+                article.pathToFile = "uploads/" + fileName;
+            }
             article.email = req.body.email
             article.discordTag = req.body.discordTag
             article.name = req.body.name
@@ -132,7 +135,8 @@ function saveArticleAndRedirect(path){
             article.discordTag = req.body.discordTag
             article.name = req.body.name
             article.comment = req.body.comment
-            if(article.pathToFile != "uploads/" + fileName){
+            // if(article.pathToFile != "uploads/" + fileName){
+            if("uploads/"+ fileName != article.pathToFile){
                 article.pathToFile = "uploads/" + fileName
             } else {
                 console.log("just this");
