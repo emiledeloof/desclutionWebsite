@@ -4,6 +4,7 @@ const router = express.Router();
 const multer = require("multer");
 let fileName = "";
 const Login = require("./../models/login");
+let loggedIn = false;
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -55,6 +56,7 @@ router.get("/login", (req, res) => {
 router.post("/login", async (req, res) => {
     if(req.body.username == process.env.LOGIN_USERNAME && req.body.password == process.env.LOGIN_PASSWORD){
         res.redirect("./submission");
+        loggedIn = true
     } else {
         res.redirect("/");
         // console.log(req.body.username, req.body.password)
@@ -66,7 +68,7 @@ router.post("/", upload.single("audioFile"), async (req, res, next) => {
     next()
 }, saveArticleAndRedirect("new"));
 
-router.put("/:id", async (req, res, next) => {
+router.put("/:id", upload.single("audioFile"), async (req, res, next) => {
     req.article = await Article.findById(req.params.id)
     next()
 }, saveArticleAndRedirect("edit"));
@@ -90,8 +92,13 @@ router.put("/:id", async (req, res, next) => {
 }, saveArticleAndRedirect("show"));
 
 router.get("/submission", async (req, res)=> {
-    const articles = await Article.find().sort({ createdAt: "desc"})
-    res.render("pages/submission", { articles: articles});
+    if(loggedIn == true){
+        const articles = await Article.find().sort({ createdAt: "desc"})
+        res.render("pages/submission", { articles: articles});
+    }
+    else{
+        res.render("./locked");
+    }
 });
 
 router.get("/:slug", async (req, res) => {
@@ -136,10 +143,10 @@ function saveArticleAndRedirect(path){
             article.name = req.body.name
             article.comment = req.body.comment
             // if(article.pathToFile != "uploads/" + fileName){
-            if("uploads/"+ fileName != article.pathToFile){
+            if(fileName != "" && "uploads/"+ fileName != article.pathToFile){
                 article.pathToFile = "uploads/" + fileName
             } else {
-                console.log("just this");
+                console.log("uploads/" + fileName);
             }
             try {
                 article = await article.save()
